@@ -65,7 +65,7 @@ ggplot(StepsByDay, aes(x = steps)) +
     labs(title = "Total steps per day", x = "Steps", y = "Frequency")
 ```
 
-![](PA1_template_files/figure-html/ggplotcode-1.png)<!-- -->
+![](PA1_template_files/figure-html/ggplot1code-1.png)<!-- -->
 
 ##### 3. Calculate and report the mean and median of the total number of steps taken per day
 
@@ -98,7 +98,7 @@ stepsbyinterval <- activity %>% group_by(interval)%>% summarise(avgSteps= mean(s
 ggplot(stepsbyinterval, aes(x = interval , y = avgSteps)) + geom_line(color="red", size=1) + labs(title = "Avg. Daily Steps", x = "Interval", y = "Avg. Steps per day")
 ```
 
-![](PA1_template_files/figure-html/time series plot code-1.png)<!-- -->
+![](PA1_template_files/figure-html/timeseries-1.png)<!-- -->
  
 ##### 2. Which 5-minute interval, on average across all the days in the dataset, contains the maximum number of steps?
 
@@ -155,7 +155,7 @@ hist <- ggplot(data=stepsByDayImputed, aes(x=DailySteps))
 hist + geom_histogram(fill="Blue",binwidth=1000)+labs(title = "Daily Steps", x = "Daily Steps", y = "Frequency")
 ```
 
-![](PA1_template_files/figure-html/dailysteps code-1.png)<!-- -->
+![](PA1_template_files/figure-html/dailystepscode-1.png)<!-- -->
 
 ##### Calculate and report the mean and median total number of steps taken per day. 
 
@@ -165,8 +165,8 @@ stepsByDayMeanImputed <- mean(stepsByDayImputed$DailySteps,na.rm=TRUE)
 stepsByDayMedianImputed <- median(stepsByDayImputed$DailySteps,na.rm=TRUE)
 ```
 ###### Mean and Median of total number of steps taken per day.
-* Mean (Imputed): 1.0766189\times 10^{4}
-* Median (Imputed):  1.0766189\times 10^{4}
+* Mean (Imputed) : 1.0766189\times 10^{4}
+* Median (Imputed) :  1.0766189\times 10^{4}
 
 ### Are there differences in activity patterns between weekdays and weekends?
 ##### 1. Create a new factor variable in the dataset with two levels – “weekday” and “weekend” indicating whether a given date is a weekday or weekend day.
@@ -188,5 +188,5 @@ activityByDay <-  aggregate(steps ~ interval + wDay, activityImputed, mean)
 ggplot(activityByDay , aes(x = interval , y = steps, color=`wDay`)) + geom_line() + labs(title = "Avg. Daily Steps by Weektype", x = "Interval", y = "No. of Steps") + facet_wrap(~`wDay` , ncol = 1, nrow=2)
 ```
 
-![](PA1_template_files/figure-html/ggplot code-1.png)<!-- -->
+![](PA1_template_files/figure-html/ggplot2code-1.png)<!-- -->
 Activity on Weekdays has the highest peak in one interval over others. On weekends the activity have more peaks. The weekend activity rate is much higher throughout the day compared to the weekdays.
